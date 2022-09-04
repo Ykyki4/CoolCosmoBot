@@ -1,13 +1,18 @@
 import requests
+import argparse
 
 
 from pathlib import Path
 from file_download import file_download
-from argparser import arg_parser
 
 
-args = arg_parser()
-launch_id = args.launch_id
+def arg_parser():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("launch_id")
+    args = parser.parse_args()
+    return args
+
+launch_id = arg_parser().launch_id
 spacex_url = f"https://api.spacexdata.com/v5/launches/{launch_id}"
 
 

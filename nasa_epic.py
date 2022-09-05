@@ -1,16 +1,15 @@
 import os
 import requests
 
+
 from pathlib import Path
-from file_download import file_download
+from file_download import download_image
 from dotenv import load_dotenv
-load_dotenv()
-
-epic_all_url = "https://api.nasa.gov/EPIC/api/natural/all"
-nasa_token = os.environ['NASA_TOKEN']
 
 
-def nasa_epic(epic_all_url, nasa_token):
+
+def nasa_epic():
+
   params = {"api_key": nasa_token}
   response = requests.get(epic_all_url, params=params)
   response.raise_for_status()
@@ -27,6 +26,15 @@ def nasa_epic(epic_all_url, nasa_token):
       filename = f"epic_nasa_{n}.png"
       Path('images/').mkdir(parents=True, exist_ok=True)
       path = f'images/{filename}'
-      file_download(path, file_url, params)
+      download_image(path, file_url, params)
 
-nasa_epic(epic_all_url, nasa_token)
+
+def main():
+  nasa_epic()
+
+
+if __name__ == "__main__":
+  epic_all_url = "https://api.nasa.gov/EPIC/api/natural/all"
+  nasa_token = os.environ['NASA_TOKEN']
+  load_dotenv()
+  main()

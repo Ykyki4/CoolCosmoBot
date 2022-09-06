@@ -20,13 +20,9 @@ def while_publish():
         time.sleep(float(publish_delay))
 
 
-def main():
-  while_publish()
-
-
 if __name__ == "__main__":
   load_dotenv()
   telegram_token = os.environ['TELEGRAM_TOKEN']
   chat_id = os.environ['CHAT_ID']
   bot = telegram.Bot(token=telegram_token)
-  main()
+  while_publish()

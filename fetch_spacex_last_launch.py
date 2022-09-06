@@ -25,11 +25,8 @@ def fetch_spacex_last_launch():
         download_image(path, image_url, params)
 
 
-def main():
-    fetch_spacex_last_launch()
-
 
 if __name__ == "__main__":
     launch_id = arg_parser().launch_id # 5eb87d47ffd86e000604b38a
     url = f"https://api.spacexdata.com/v5/launches/{launch_id}"
-    main()
+    fetch_spacex_last_launch()

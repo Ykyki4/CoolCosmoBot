@@ -29,12 +29,8 @@ def nasa_epic():
       download_image(path, file_url, params)
 
 
-def main():
-  nasa_epic()
-
-
 if __name__ == "__main__":
   epic_all_url = "https://api.nasa.gov/EPIC/api/natural/all"
   nasa_token = os.environ['NASA_TOKEN']
   load_dotenv()
-  main()
+  nasa_epic()

@@ -21,12 +21,8 @@ def nasa_picture_day():
             download_image(path, image_url, params)
 
 
-def main():
-    nasa_picture_day()
-
-
 if __name__ == "__main__":
     nasa_token = os.environ['NASA_TOKEN']
     nasa_url = "https://api.nasa.gov/planetary/apod"
     load_dotenv()
-    main()
+    nasa_picture_day()

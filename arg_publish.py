@@ -17,8 +17,6 @@ def arg_parser():
 
 def arg_publish():
     load_dotenv()
-    telegram_token = os.environ['TELEGRAM_TOKEN']
-    chat_id = os.environ['CHAT_ID']
     bot = telegram.Bot(token=telegram_token)
     if arg_parser().image_path!=None:
         image_path = PurePath('images', arg_parser().image_path)
@@ -32,4 +30,6 @@ def arg_publish():
 
 
 if __name__ == "__main__":
+    telegram_token = os.environ['TELEGRAM_TOKEN']
+    chat_id = os.environ['CHAT_ID']
     arg_publish()

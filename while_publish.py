@@ -9,8 +9,6 @@ from publish_image import publish_image
 
 def while_publish():
   load_dotenv()
-  telegram_token = os.environ['TELEGRAM_TOKEN']
-  chat_id = os.environ['CHAT_ID']
   bot = telegram.Bot(token=telegram_token)
   while True:
     images_path = os.walk('images')
@@ -25,4 +23,6 @@ def while_publish():
 
 
 if __name__ == "__main__":
+  telegram_token = os.environ['TELEGRAM_TOKEN']
+  chat_id = os.environ['CHAT_ID']
   while_publish()

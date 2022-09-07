@@ -11,7 +11,6 @@ from dotenv import load_dotenv
 def nasa_epic():
   load_dotenv()
   epic_all_url = "https://api.nasa.gov/EPIC/api/natural/all"
-  nasa_token = os.environ['NASA_TOKEN']
   params = {"api_key": nasa_token}
   response = requests.get(epic_all_url, params=params)
   response.raise_for_status()
@@ -32,4 +31,5 @@ def nasa_epic():
 
 
 if __name__ == "__main__":
+  nasa_token = os.environ['NASA_TOKEN']
   nasa_epic()

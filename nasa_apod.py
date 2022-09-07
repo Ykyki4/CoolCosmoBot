@@ -9,7 +9,6 @@ from dotenv import load_dotenv
 
 def nasa_picture_day():
     load_dotenv()
-    nasa_token = os.environ['NASA_TOKEN']
     nasa_url = "https://api.nasa.gov/planetary/apod"
     params = {"api_key": nasa_token,
                 "count": "30"}
@@ -25,4 +24,5 @@ def nasa_picture_day():
 
 
 if __name__ == "__main__":
+    nasa_token = os.environ['NASA_TOKEN']
     nasa_picture_day()

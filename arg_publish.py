@@ -4,6 +4,7 @@ import telegram
 import argparse
 from pathlib import PurePath
 from dotenv import load_dotenv
+from publish_image import publish_image
 
 
 
@@ -21,15 +22,13 @@ def arg_publish():
     bot = telegram.Bot(token=telegram_token)
     if arg_parser().image_path!=None:
         image_path = PurePath('images', arg_parser().image_path)
-        with open(image_path, 'rb') as file:
-            bot.send_document(chat_id=chat_id, document=file)
+        publish_image(image_path, chat_id, bot)
     else:
         dir_images = os.walk('images')
         for images in dir_images:
             random_image = random.choice(images[2])
             image_path = PurePath('images', random_image)
-            with open(image_path, 'rb') as file:
-                bot.send_document(chat_id=chat_id, document=file)
+            publish_image(image_path, chat_id, bot)
 
 
 if __name__ == "__main__":

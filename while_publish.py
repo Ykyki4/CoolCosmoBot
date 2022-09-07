@@ -4,6 +4,7 @@ import time
 import telegram
 from pathlib import PurePath
 from dotenv import load_dotenv
+from publish_image import publish_image
 
 
 def while_publish():
@@ -17,8 +18,7 @@ def while_publish():
       random.shuffle(images)
       for image in images:
         image_path = PurePath('images', image)
-        with open(image_path, 'rb') as file:
-            bot.send_document(chat_id=chat_id, document=file)
+        publish_image(image_path, chat_id, bot)
         images.remove(image)
         publish_delay = os.environ['PUBLISH_DELAY']
         time.sleep(float(publish_delay))

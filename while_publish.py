@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 from publish_image import publish_image
 
 
-def while_publish():
+def publish_loop():
   load_dotenv()
   bot = telegram.Bot(token=telegram_token)
   while True:
@@ -25,4 +25,4 @@ def while_publish():
 if __name__ == "__main__":
   telegram_token = os.environ['TELEGRAM_TOKEN']
   chat_id = os.environ['CHAT_ID']
-  while_publish()
+  publish_loop()

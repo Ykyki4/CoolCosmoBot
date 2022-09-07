@@ -18,7 +18,7 @@ def arg_parser():
 def arg_publish():
     load_dotenv()
     bot = telegram.Bot(token=telegram_token)
-    if arg_parser().image_path!=None:
+    if arg_parser().image_path:
         image_path = PurePath('images', arg_parser().image_path)
         publish_image(image_path, chat_id, bot)
     else:

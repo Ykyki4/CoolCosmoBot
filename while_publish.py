@@ -7,8 +7,7 @@ from dotenv import load_dotenv
 from publish_image import publish_image
 
 
-def publish_loop():
-  load_dotenv()
+def publish_loop(telegram_token, chat_id):
   bot = telegram.Bot(token=telegram_token)
   while True:
     images_path = os.walk('images')
@@ -23,6 +22,7 @@ def publish_loop():
 
 
 if __name__ == "__main__":
+  load_dotenv()
   telegram_token = os.environ['TELEGRAM_TOKEN']
   chat_id = os.environ['CHAT_ID']
-  publish_loop()
+  publish_loop(telegram_token, chat_id)

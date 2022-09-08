@@ -13,9 +13,7 @@ def arg_parser():
     return args
 
 
-def fetch_spacex_last_launch():
-    launch_id = arg_parser().launch_id # 5eb87d47ffd86e000604b38a
-    url = f"https://api.spacexdata.com/v5/launches/{launch_id}"
+def download_fetch_spacex_last_launch(launch_id, url):
     params=None
     response = requests.get(url)
     response.raise_for_status()
@@ -29,4 +27,6 @@ def fetch_spacex_last_launch():
 
 
 if __name__ == "__main__":
-    fetch_spacex_last_launch()
+    launch_id = arg_parser().launch_id # 5eb87d47ffd86e000604b38a
+    url = f"https://api.spacexdata.com/v5/launches/{launch_id}"
+    download_fetch_spacex_last_launch(launch_id, url)

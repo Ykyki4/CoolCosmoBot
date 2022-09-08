@@ -15,8 +15,7 @@ def arg_parser():
     return args
 
 
-def publish_arg():
-    load_dotenv()
+def publish_arg(telegram_token, chat_id):
     bot = telegram.Bot(token=telegram_token)
     image_path = arg_parser().image_path
     if image_path:
@@ -31,6 +30,7 @@ def publish_arg():
 
 
 if __name__ == "__main__":
+    load_dotenv()
     telegram_token = os.environ['TELEGRAM_TOKEN']
     chat_id = os.environ['CHAT_ID']
-    publish_arg()
+    publish_arg(telegram_token, chat_id)

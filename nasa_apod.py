@@ -7,9 +7,7 @@ from file_extension import file_extension
 from dotenv import load_dotenv
 
 
-def nasa_picture_day():
-    load_dotenv()
-    nasa_url = "https://api.nasa.gov/planetary/apod"
+def download_nasa_picture_day(nasa_url, nasa_token):
     params = {"api_key": nasa_token,
                 "count": "30"}
     response = requests.get(nasa_url, params=params)
@@ -24,5 +22,7 @@ def nasa_picture_day():
 
 
 if __name__ == "__main__":
+    load_dotenv()
+    nasa_url = "https://api.nasa.gov/planetary/apod"
     nasa_token = os.environ['NASA_TOKEN']
-    nasa_picture_day()
+    download_nasa_picture_day(nasa_url, nasa_token)
